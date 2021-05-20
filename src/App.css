@@ -1,0 +1,10 @@
+.ph20{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.collection .collection-item.active{
+    background-color: #1e88e5;
+}
+.collection .collection-item.active span{
+    color: #ffffff!important;
+}
