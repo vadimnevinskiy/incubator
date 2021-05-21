@@ -3,7 +3,7 @@ import classes from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div>Profile</div>
+        <div className={classes.profile}>Profile</div>
     )
 }
 export default Profile;

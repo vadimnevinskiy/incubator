@@ -16,7 +16,7 @@ function App() {
             <div>
                 <div className="row">
                     <Sidebar />
-                    <div className="col s8 m9 l9 xl10">
+                    <div className="col s12 m9 l9 xl10">
                         <Route path={'/profile'} render={() => <Profile />} />
                         <Route path={'/users'} render={() => <Users />} />
                         <Route path={'/dialogs'} render={() => <Dialogs />} />

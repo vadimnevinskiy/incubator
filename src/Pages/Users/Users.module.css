@@ -1,0 +1,12 @@
+.cardImage{
+    background-color: #1e88e5;
+    height: 180px;
+}
+.cardContent{
+    padding-left: 10px!important;
+    padding-right: 10px!important;
+}
+.cardTitle{
+    overflow-x: hidden;
+    white-space: nowrap;
+}
