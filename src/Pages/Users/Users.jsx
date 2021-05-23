@@ -2,9 +2,17 @@ import React, {useCallback, useEffect} from "react";
 import classes from './Users.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {usersAPI} from "../../redux/api";
-import {setCurrentPage, setTotalUsersCount, setUsers} from "../../redux/actions/user-action";
-import avatar from '../../assets/img/avatar.png'
+import {
+    setCurrentPage,
+    setFollowingUser, setToggleFetching,
+    setTotalUsersCount,
+    setUnfollowingUser,
+    setUsers
+} from "../../redux/actions/user-action";
+import avatar from '../../assets/img/defaultimg.jpg'
 import Paginator from "../../components/Paginator/Paginator";
+import PreloaderHorizontal from "../../components/Preloaders/PreloaderHorizontal";
+import PreloaderCircle from "../../components/Preloaders/PreloaderCircle";
 
 const Users = () => {
     const dispatch = useDispatch();
@@ -12,13 +20,13 @@ const Users = () => {
     const totalCount = useSelector(({userPage}) => userPage.totalCount);
     const pageSize = useSelector(({userPage}) => userPage.pageSize);
     const currentPage = useSelector(({userPage}) => userPage.currentPage);
-
+    const fetching = useSelector(({userPage}) => userPage.fetching);
 
     useEffect(() => {
-        // requestUsers(1, 10)
+        dispatch(setToggleFetching(true))
         usersAPI.getUsers(currentPage, pageSize)
             .then(response => {
-                // console.log(response);
+                dispatch(setToggleFetching(false))
                 dispatch(setUsers(response.data.items));
                 dispatch(setTotalUsersCount(response.data.totalCount))
             })
@@ -27,13 +35,39 @@ const Users = () => {
 
     const changeCurrentPage = useCallback((currentPage) => {
         dispatch(setCurrentPage(currentPage))
-    }, [currentPage])
+    }, [currentPage, dispatch])
 
+
+    const followUser = useCallback((userId) => {
+        usersAPI.followUser(userId)
+            .then(response => {
+                message('Following!')
+                dispatch(setFollowingUser(userId))
+            })
+    }, [dispatch])
+
+    const unfollowUser = useCallback((userId) => {
+        dispatch(setUnfollowingUser(userId))
+    }, [dispatch])
+
+
+    const message = useCallback((text) => {
+        if (window.M && text) {
+            window.M.toast({html: text})
+        }
+    }, [])
+
+    console.log(users)
 
     if (users.length > 0) {
         return (
-            <div className="row">
-                <Paginator changeCurrentPage={changeCurrentPage} totalCount={totalCount} pageSize={pageSize} currentPage={currentPage} items={users}/>
+            <div className={classes.userContainer + " row"}>
+                {
+                    fetching &&
+                    <PreloaderCircle />
+                }
+                <Paginator changeCurrentPage={changeCurrentPage} totalCount={totalCount} pageSize={pageSize}
+                           currentPage={currentPage} items={users}/>
                 {
                     users.map((user, index) => {
                         return (
@@ -43,12 +77,20 @@ const Users = () => {
                                         {
                                             user.photos.small
                                                 ? <img src={user.photos.small} alt={user.name}/>
-                                                : <img src={avatar} alt={`${user.name}_1`}/>
+                                                : <img src={avatar} alt={`${user.name}`} className={classes.avatar}/>
                                         }
-
-
-                                        <a href="!#" className="btn-floating halfway-fab waves-effect waves-light red"><i
-                                            className="material-icons">add</i></a>
+                                        {
+                                            user.followed === true &&
+                                            <span className="btn-floating halfway-fab waves-effect waves-light red">
+                                                <i className="material-icons" onClick={() => unfollowUser(user.id)}>remove</i>
+                                            </span>
+                                        }
+                                        {
+                                            user.followed === false &&
+                                            <span className="btn-floating halfway-fab waves-effect waves-light teal">
+                                                <i className="material-icons" onClick={() => followUser(user.id)}>add</i>
+                                            </span>
+                                        }
                                     </div>
                                     <div className={classes.cardContent + " card-content"}>
                                         <span className={classes.cardTitle + " card-title"}>{user.name}</span>
@@ -63,9 +105,7 @@ const Users = () => {
     }
 
     return (
-        <div className="progress">
-            <div className="indeterminate"></div>
-        </div>
+        <PreloaderHorizontal />
     )
 
 }

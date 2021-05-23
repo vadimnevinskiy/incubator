@@ -1,6 +1,6 @@
 .cardImage{
-    background-color: #1e88e5;
-    height: 180px;
+    background-color: #ffffff;
+    /*height: 245px;*/
 }
 .cardContent{
     padding-left: 10px!important;
@@ -9,4 +9,10 @@
 .cardTitle{
     overflow-x: hidden;
     white-space: nowrap;
+}
+.userContainer{
+    position: relative;
+}
+.avatar{
+    opacity: 0.1;
 }

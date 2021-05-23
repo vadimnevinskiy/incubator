@@ -58,65 +58,63 @@ const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items,
 
     return (
         <>
-            leftPortionNumber = {leftPortionNumber}<br/>
-            rightPortionNumber = {rightPortionNumber}
             <div className={classes.pagination}>
                 <ul className={" pagination"}>
                     <li className={leftPortionNumber !== 1 ? "waves-effect" : 'disabled'}>
                         {
                             leftPortionNumber !== 1 &&
-                            <a href="#!" onClick={firstPortion}>
+                            <span onClick={firstPortion}>
                                 <i className="material-icons">first_page</i>
-                            </a>
+                            </span>
                         }
                         {
                             leftPortionNumber === 1 &&
-                            <a href="#!">
+                            <span>
                                 <i className="material-icons">first_page</i>
-                            </a>
+                            </span>
                         }
                     </li>
                     <li className={leftPortionNumber !== 1 ? "waves-effect" : 'disabled'}>
                         {
                             leftPortionNumber !== 1 &&
-                            <a href="#!"  onClick={previewPortion}>
+                            <span  onClick={previewPortion}>
                                 <i className="material-icons">chevron_left</i>
-                            </a>
+                            </span>
                         }
                         {
                             leftPortionNumber === 1 &&
-                            <a href="#!">
+                            <span>
                                 <i className="material-icons">chevron_left</i>
-                            </a>
+                            </span>
                         }
                     </li>
                     {pageItem}
                     <li className={portionCount > currentPortion ? "waves-effect" : 'disabled'}>
                         {
                             portionCount > currentPortion &&
-                            <a href="#!" onClick={nextPortion}>
+                            <span onClick={nextPortion}>
                                 <i className="material-icons">chevron_right</i>
-                            </a>
+                            </span>
                         }
                         {
                             portionCount <= currentPortion &&
-                            <a href="#!">
+                            <span>
                                 <i className="material-icons">chevron_right</i>
-                            </a>
+                            </span>
                         }
                     </li>
                     <li className={portionCount > currentPortion ? "waves-effect" : 'disabled'}>
                         {
                             portionCount > currentPortion &&
-                            <a href="#!" onClick={lastPortion}>
+                            <span onClick={lastPortion}>
                                 <i className="material-icons">last_page</i>
-                            </a>
+                            </span>
                         }
                         {
                             portionCount <= currentPortion &&
-                            <a href="#!">
+                            <span>
                                 <i className="material-icons">last_page</i>
-                            </a>
+                            </span>
                         }
                     </li>
                 </ul>
