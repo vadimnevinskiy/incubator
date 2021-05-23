@@ -10,7 +10,7 @@ const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items,
     useEffect(() => {
         const setPageNumbersToArray = () => {
             const temporaryStorageOfPages = [];
-            for (let i = 1; i < pagesLength; i++) {
+            for (let i = 1; i <= pagesLength; i++) {
                 temporaryStorageOfPages.push(i)
             }
             setPages(temporaryStorageOfPages)
@@ -57,17 +57,71 @@ const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items,
 
 
     return (
-        <ul className={classes.pagination + " pagination"}>
-            <li className="waves-effect"><a href="#!" onClick={firstPortion}><i
-                className="material-icons">first_page</i></a></li>
-            <li className="waves-effect"><a href="#!" onClick={previewPortion}><i
-                className="material-icons">chevron_left</i></a></li>
-            {pageItem}
-            <li className="waves-effect"><a href="#!" onClick={nextPortion}><i
-                className="material-icons">chevron_right</i></a></li>
-            <li className="waves-effect"><a href="#!" onClick={lastPortion}><i className="material-icons">last_page</i></a>
-            </li>
-        </ul>
+        <>
+            leftPortionNumber = {leftPortionNumber}<br/>
+            rightPortionNumber = {rightPortionNumber}
+            <div className={classes.pagination}>
+                <ul className={" pagination"}>
+                    <li className={leftPortionNumber !== 1 ? "waves-effect" : 'disabled'}>
+                        {
+                            leftPortionNumber !== 1 &&
+                            <a href="#!" onClick={firstPortion}>
+                                <i className="material-icons">first_page</i>
+                            </a>
+                        }
+                        {
+                            leftPortionNumber === 1 &&
+                            <a href="#!">
+                                <i className="material-icons">first_page</i>
+                            </a>
+                        }
+                    </li>
+                    <li className={leftPortionNumber !== 1 ? "waves-effect" : 'disabled'}>
+                        {
+                            leftPortionNumber !== 1 &&
+                            <a href="#!"  onClick={previewPortion}>
+                                <i className="material-icons">chevron_left</i>
+                            </a>
+                        }
+                        {
+                            leftPortionNumber === 1 &&
+                            <a href="#!">
+                                <i className="material-icons">chevron_left</i>
+                            </a>
+                        }
+                    </li>
+                    {pageItem}
+                    <li className={portionCount > currentPortion ? "waves-effect" : 'disabled'}>
+                        {
+                            portionCount > currentPortion &&
+                            <a href="#!" onClick={nextPortion}>
+                                <i className="material-icons">chevron_right</i>
+                            </a>
+                        }
+                        {
+                            portionCount <= currentPortion &&
+                            <a href="#!">
+                                <i className="material-icons">chevron_right</i>
+                            </a>
+                        }
+                    </li>
+                    <li className={portionCount > currentPortion ? "waves-effect" : 'disabled'}>
+                        {
+                            portionCount > currentPortion &&
+                            <a href="#!" onClick={lastPortion}>
+                                <i className="material-icons">last_page</i>
+                            </a>
+                        }
+                        {
+                            portionCount <= currentPortion &&
+                            <a href="#!">
+                                <i className="material-icons">last_page</i>
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </>
     )
 }
 export default Paginator;

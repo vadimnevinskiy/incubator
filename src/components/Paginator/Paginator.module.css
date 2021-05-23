@@ -1,5 +1,11 @@
 .pagination{
-
+    text-align: center;
+}
+.pagination ul{
+    display: inline-block;
+}
+.pagination li{
+    margin: 0px auto;
 }
 .pagination span {
     color: #444;

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import classes from './Users.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {usersAPI} from "../../redux/api";
@@ -24,9 +24,10 @@ const Users = () => {
             })
     }, [dispatch, currentPage, pageSize])
 
-    const changeCurrentPage = (currentPage) => {
+
+    const changeCurrentPage = useCallback((currentPage) => {
         dispatch(setCurrentPage(currentPage))
-    }
+    }, [currentPage])
 
 
     if (users.length > 0) {
