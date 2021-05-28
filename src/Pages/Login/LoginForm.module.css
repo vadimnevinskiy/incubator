@@ -1,0 +1,13 @@
+.login{
+    border: 1px solid #cccccc;
+    padding: 10px 20px 20px 20px;
+    width: 400px;
+    margin: 50px auto;
+}
+.blockTitle{
+    text-align: center;
+    margin: 0px;
+}
+.buttons{
+    margin: 20px 0px 0px 0px;
+}

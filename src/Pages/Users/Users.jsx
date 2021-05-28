@@ -1,18 +1,21 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 import classes from './Users.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {usersAPI} from "../../redux/api";
 import {
     setCurrentPage,
-    setFollowingUser, setToggleFetching,
+    setFollowingUser,
     setTotalUsersCount,
     setUnfollowingUser,
     setUsers
 } from "../../redux/actions/user-action";
+import {setToggleFetching} from "../../redux/actions/general-actions";
 import avatar from '../../assets/img/defaultimg.jpg'
 import Paginator from "../../components/Paginator/Paginator";
 import PreloaderHorizontal from "../../components/Preloaders/PreloaderHorizontal";
 import PreloaderCircle from "../../components/Preloaders/PreloaderCircle";
+import {NavLink} from "react-router-dom";
+
 
 const Users = () => {
     const dispatch = useDispatch();
@@ -20,7 +23,9 @@ const Users = () => {
     const totalCount = useSelector(({userPage}) => userPage.totalCount);
     const pageSize = useSelector(({userPage}) => userPage.pageSize);
     const currentPage = useSelector(({userPage}) => userPage.currentPage);
-    const fetching = useSelector(({userPage}) => userPage.fetching);
+    const fetching = useSelector(({general}) => general.fetching);
+    const tooltipRef = useRef(null);
+
 
     useEffect(() => {
         dispatch(setToggleFetching(true))
@@ -30,6 +35,8 @@ const Users = () => {
                 dispatch(setUsers(response.data.items));
                 dispatch(setTotalUsersCount(response.data.totalCount))
             })
+
+        window.M.Tooltip.init(tooltipRef, {});
     }, [dispatch, currentPage, pageSize])
 
 
@@ -57,14 +64,13 @@ const Users = () => {
         }
     }, [])
 
-    console.log(users)
 
     if (users.length > 0) {
         return (
             <div className={classes.userContainer + " row"}>
                 {
                     fetching &&
-                    <PreloaderCircle />
+                    <PreloaderCircle/>
                 }
                 <Paginator changeCurrentPage={changeCurrentPage} totalCount={totalCount} pageSize={pageSize}
                            currentPage={currentPage} items={users}/>
@@ -82,18 +88,21 @@ const Users = () => {
                                         {
                                             user.followed === true &&
                                             <span className="btn-floating halfway-fab waves-effect waves-light red">
-                                                <i className="material-icons" onClick={() => unfollowUser(user.id)}>remove</i>
+                                                <i className="material-icons"
+                                                   onClick={() => unfollowUser(user.id)}>remove</i>
                                             </span>
                                         }
                                         {
                                             user.followed === false &&
                                             <span className="btn-floating halfway-fab waves-effect waves-light teal">
-                                                <i className="material-icons" onClick={() => followUser(user.id)}>add</i>
+                                                <i className="material-icons"
+                                                   onClick={() => followUser(user.id)}>add</i>
                                             </span>
                                         }
                                     </div>
                                     <div className={classes.cardContent + " card-content"}>
-                                        <span className={classes.cardTitle + " card-title"}>{user.name}</span>
+                                        <NavLink to={`/profile/${user.id}`}><span
+                                            className={classes.cardTitle + " card-title"}>{user.name}</span></NavLink>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +114,7 @@ const Users = () => {
     }
 
     return (
-        <PreloaderHorizontal />
+        <PreloaderHorizontal/>
     )
 
 }

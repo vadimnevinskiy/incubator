@@ -1,10 +1,16 @@
 import {combineReducers, createStore} from "redux";
 import userReducer from "./redusers/user-reducer";
 import sidebarReducer from "./redusers/sidebar-reducer";
+import profileReducer from "./redusers/profile-reducer";
+import generalReducer from "./redusers/general-reducer";
+import authReducer from "./redusers/auth-reducer";
 
 const reducers = combineReducers({
     sidebar: sidebarReducer,
-    userPage: userReducer
+    userPage: userReducer,
+    profilePage : profileReducer,
+    general: generalReducer,
+    auth: authReducer
 })
 
 

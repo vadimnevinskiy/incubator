@@ -4,8 +4,7 @@ const initialState = {
     users: [],
     totalCount: 0,
     pageSize: 10,
-    currentPage: 1,
-    fetching: false
+    currentPage: 1
 }
 
 const userReducer = (state = initialState, action) => {
@@ -40,11 +39,6 @@ const userReducer = (state = initialState, action) => {
                         }
                     }
                 }),
-            }
-        case FETCHING_TOGGLE:
-            return {
-                ...state,
-                fetching: action.fetching
             }
         default:
             return state;

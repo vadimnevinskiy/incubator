@@ -1,0 +1,14 @@
+.contacts{
+    padding: 20px 0px 30px 0px;
+}
+.contacts a, .contacts span{
+    display: inline-block;
+    margin-right: 10px;
+}
+.contacts .disable{
+    opacity: 0.1;
+}
+.contacts img{
+    width: 25px;
+    height: 25px;
+}

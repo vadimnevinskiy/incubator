@@ -38,9 +38,3 @@ export const setUnfollowingUser = (userId) => {
         userId: userId
     }
 }
-export const setToggleFetching = (fetching) => {
-    return {
-        type: FETCHING_TOGGLE,
-        fetching: fetching
-    }
-}

@@ -1,3 +1,30 @@
 .profile{
 
 }
+.ProfileHeader{
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid #c5cae9;
+    background: #e8eaf6;
+}
+.profileImg{
+    margin-bottom: 20px;
+}
+.profileImg img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #9e9e9e;
+}
+.uppercase{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0px 0px 10px 0px;
+}
+
+.chipItem{
+    display: inline-block;
+    margin: 0px 10px 10px;
+}
