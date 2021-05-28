@@ -43,6 +43,9 @@ const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items,
     }
 
 
+    //TODO Реализовать корректное отображение текущей порции пагинатора
+    // после возврата на страницу пользователей
+
     let pageItem = pagesNumbersForDisplayLayout
         .filter(p => p >= leftPortionNumber && p < rightPortionNumber)
         .map(pageItem => {
@@ -54,6 +57,8 @@ const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items,
                 </li>
             )
         })
+
+
 
 
     return (
