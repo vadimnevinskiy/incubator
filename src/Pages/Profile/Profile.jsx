@@ -71,16 +71,9 @@ const Profile = () => {
                     </div>
                     <h3 className={classes.uppercase}>{profile.fullName}</h3>
                     {
-                        Number(myId) === Number(userId) &&
-                            <>
-                                {
-                                    status &&
-                                    <Status status={status} myId={myId} userId={userId}/>
-                                }
-                            </>
-
+                        status &&
+                        <Status status={status} myId={myId} userId={userId}/>
                     }
-
                     <Contacts contacts={profile.contacts} />
                     <div className={classes.profileInfo}>
                         {
