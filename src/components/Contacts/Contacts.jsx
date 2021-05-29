@@ -13,6 +13,7 @@ import youtube from "../../assets/img/contacts/youtube.png";
 
 
 const Contacts = ({contacts}) => {
+    // TODO Check url links
     return (
         <div className={classes.contacts}>
             {
