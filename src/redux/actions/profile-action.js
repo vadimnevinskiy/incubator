@@ -1,4 +1,4 @@
-import {SET_AUTH_ID, SET_PROFILE} from "../vars";
+import {SET_AUTH_ID, SET_PROFILE, SET_STATUS} from "../vars";
 
 export const setProfile = (profile) => {
     return {
@@ -7,4 +7,9 @@ export const setProfile = (profile) => {
     }
 }
 
-
+export const setStatus = (status) => {
+    return {
+        type: SET_STATUS,
+        status: status
+    }
+}
