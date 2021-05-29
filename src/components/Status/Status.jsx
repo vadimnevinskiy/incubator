@@ -17,18 +17,22 @@ const Status = ({status, myId, userId}) => {
     }, [])
 
     const onSubmit = values => {
-        window.alert(JSON.stringify(values, 0, 2))
-        profileAPI.updateStatus(values.status)
-            .then(response => {
-                dispatch(setStatus(values.status))
-                showStatusForm(false)
-            })
+        if (values.status) {
+            profileAPI.updateStatus(values.status)
+                .then(response => {
+                    if(response.status )
+                        dispatch(setStatus(values.status))
+                    showStatusForm(false)
+                })
+        } else {
+            window.M.toast({html: 'Empty data!'})
+        }
     }
 
 
 
     return (
-        <div className={classes.status + " z-depth-2"}>
+        <div className={classes.status + " z-depth-1"}>
             {
                 !showStatusForrm &&
                 <>{status}</>

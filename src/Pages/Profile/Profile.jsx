@@ -70,7 +70,17 @@ const Profile = () => {
                         }
                     </div>
                     <h3 className={classes.uppercase}>{profile.fullName}</h3>
-                    <Status status={status} myId={myId} userId={userId}/>
+                    {
+                        Number(myId) === Number(userId) &&
+                            <>
+                                {
+                                    status &&
+                                    <Status status={status} myId={myId} userId={userId}/>
+                                }
+                            </>
+
+                    }
+
                     <Contacts contacts={profile.contacts} />
                     <div className={classes.profileInfo}>
                         {
