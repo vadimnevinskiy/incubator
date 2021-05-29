@@ -7,6 +7,7 @@ export const SET_FOLLOWING_USER = 'SET_FOLLOWING_USER';
 export const SET_UNFOLLOWING_USER = 'SET_UNFOLLOWING_USER';
 export const SET_STATUS = 'SET_STATUS';
 
+
 export const SET_PROFILE = 'SET_PROFILE';
 
 export const SET_MY_AUTH_DATA = 'SET_MY_AUTH_DATA';

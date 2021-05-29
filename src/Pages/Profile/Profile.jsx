@@ -1,12 +1,13 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import classes from './Profile.module.css';
-import {Redirect, useHistory} from 'react-router-dom';
-import {authAPI, profileAPI} from "../../redux/api";
+import {useHistory} from 'react-router-dom';
+import {profileAPI} from "../../redux/api";
 import {useDispatch, useSelector} from "react-redux";
 import {setProfile, setStatus} from "../../redux/actions/profile-action";
 import PreloaderCircle from "../../components/Preloaders/PreloaderCircle";
 import avatar from '../../assets/img/defaultimg.jpg'
 import Contacts from "../../components/Contacts/Contacts";
+import Status from "../../components/Status/Status";
 
 
 
@@ -17,9 +18,6 @@ const Profile = () => {
     const status = useSelector(({profilePage}) => profilePage.status);
     const myId = useSelector(({auth}) => auth.userId);
     const isAuth = useSelector(({auth}) => auth.isAuth);
-
-    const [showStatusForrm, setShowStatusForm] = useState(false)
-
 
 
     const userId = history.location.pathname.split('/')[2];
@@ -57,9 +55,7 @@ const Profile = () => {
     }, [userId])
 
 
-    const showStatusForm = useCallback((val) => {
-        setShowStatusForm(val)
-    }, [])
+
 
 
     if (profile) {
@@ -74,33 +70,7 @@ const Profile = () => {
                         }
                     </div>
                     <h3 className={classes.uppercase}>{profile.fullName}</h3>
-                    {
-                        status &&
-                        <div className={classes.status}>
-                            {
-                                !showStatusForrm &&
-                                <>{status}</>
-                            }
-                            {
-                                Number(myId) === Number(userId) &&
-                                    <>
-                                    {
-                                        !showStatusForrm
-                                            ? <i className={classes.editRight + " material-icons"} onClick={() => showStatusForm(true)}>create</i>
-                                            : <i className={classes.editRight + " material-icons"} onClick={() => showStatusForm(false)}>close</i>
-                                    }
-                                    </>
-                            }
-                            {
-                                showStatusForrm &&
-                                <div className="input-field">
-                                    <input id="status" type="text"  />
-                                    <label htmlFor="status">Status</label>
-                                </div>
-                            }
-                        </div>
-                    }
-
+                    <Status status={status} myId={myId} userId={userId}/>
                     <Contacts contacts={profile.contacts} />
                     <div className={classes.profileInfo}>
                         {
@@ -127,7 +97,6 @@ const Profile = () => {
     }
     return (
         <PreloaderCircle />
-        // <Redirect to={`/login`} />
     )
 
 }
