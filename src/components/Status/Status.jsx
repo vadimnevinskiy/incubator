@@ -28,7 +28,7 @@ const Status = ({status, myId, userId}) => {
 
 
     return (
-        <div className={classes.status}>
+        <div className={classes.status + " z-depth-2"}>
             {
                 !showStatusForrm &&
                 <>{status}</>
@@ -60,9 +60,9 @@ const Status = ({status, myId, userId}) => {
                                     <label htmlFor="status" className={"active"}>Status</label>
                                 </div>
                             </div>
-                            <div className="buttons">
-                                <button type="submit" disabled={submitting || pristine}>
-                                    Submit
+                            <div className="buttons ">
+                                <button className={"btn waves-effect waves-light"} type="submit" disabled={submitting || pristine}>
+                                    Update
                                 </button>
                             </div>
                         </form>
