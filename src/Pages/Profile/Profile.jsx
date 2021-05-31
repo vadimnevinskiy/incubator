@@ -80,7 +80,7 @@ const Profile = () => {
                         <>
                             <div className={classes.profileImg}>
                                 {
-                                    profile.photos.small
+                                    profile.photos?.small
                                         ? <img className={"z-depth-2"} src={profile.photos.small} alt={profile.fullName}/>
                                         : <img className={"z-depth-2"} src={avatar} alt={profile.fullName}/>
                                 }
@@ -115,7 +115,7 @@ const Profile = () => {
 
                     {
                         showForm &&
-                        <EditProfileForm profile={profile} />
+                        <EditProfileForm profile={profile} userId={userId} setShowForm={setShowForm} />
                     }
                 </div>
             </div>

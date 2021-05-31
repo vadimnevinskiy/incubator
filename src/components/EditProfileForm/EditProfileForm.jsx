@@ -2,10 +2,47 @@ import React from "react";
 import classes from './EditProfileForm.module.css';
 import {Field, Form} from "react-final-form";
 import avatar from "../../assets/img/defaultimg.jpg";
+import {profileAPI} from "../../redux/api";
+import {useDispatch} from "react-redux";
+import {setProfile} from "../../redux/actions/profile-action";
 
-const EditProfileForm = ({profile}) => {
+const EditProfileForm = ({profile, userId, setShowForm}) => {
+    const dispatch = useDispatch();
     const onSubmit = values => {
-        window.alert(JSON.stringify(values, 0, 2))
+        const updatedProfile = {
+            aboutMe: values.aboutMe,
+            contacts: {
+                facebook: values.facebook,
+                website: values.website,
+                vk: values.vk,
+                twitter: values.twitter,
+                instagram: values.instagram,
+                youtube: values.youtube,
+                github: values.github,
+                mainLink: values.mainLink,
+            },
+            lookingForAJob: values.lookingForAJob,
+            lookingForAJobDescription: values.lookingForAJobDescription,
+            fullName: values.fullName
+        }
+        updateProfile(updatedProfile)
+    }
+
+    const updateProfile = (profile) => {
+        profileAPI.updateProfile(profile)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    getProfile(userId)
+                }
+            })
+    }
+
+    const getProfile = (userId) => {
+        profileAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setProfile(response.data))
+                setShowForm(false)
+            })
     }
 
     return (
@@ -32,7 +69,7 @@ const EditProfileForm = ({profile}) => {
                             <div className={"col s12 m12 l12 xl12"}>
                                 <div className={classes.profileImg}>
                                     {
-                                        profile.photos.small
+                                        profile.photos?.small
                                             ? <img className={"z-depth-2"} src={profile.photos.small} alt={profile.fullName}/>
                                             : <img className={"z-depth-2"} src={avatar} alt={profile.fullName}/>
                                     }
