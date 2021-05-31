@@ -1,0 +1,14 @@
+.contactsBlock{
+    border: 1px solid #cccccc;
+    padding: 20px;
+    background: #ffffff;
+}
+.profileImg{
+    margin-bottom: 20px;
+}
+.profileImg img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #9e9e9e;
+}
