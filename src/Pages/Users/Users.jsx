@@ -12,8 +12,8 @@ import {
 import {setToggleFetching} from "../../redux/actions/general-actions";
 import avatar from '../../assets/img/defaultimg.jpg'
 import Paginator from "../../components/Paginator/Paginator";
-import PreloaderHorizontal from "../../components/Preloaders/PreloaderHorizontal";
-import PreloaderCircle from "../../components/Preloaders/PreloaderCircle";
+import PreloaderHorizontal from "../../components/common/Preloaders/PreloaderHorizontal";
+import PreloaderCircle from "../../components/common/Preloaders/PreloaderCircle";
 import {NavLink} from "react-router-dom";
 
 
