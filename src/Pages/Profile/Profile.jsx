@@ -74,7 +74,11 @@ const Profile = () => {
         return (
             <div className={classes.profile}>
                 <div className={classes.ProfileHeader}>
-                    <ShowHideBtn toggleForm={toggleForm} showForm={showForm} />
+                    {
+                        Number(myId) === Number(userId) &&
+                        <ShowHideBtn toggleForm={toggleForm} showForm={showForm} />
+                    }
+
                     {
                         !showForm &&
                         <>
