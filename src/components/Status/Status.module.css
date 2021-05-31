@@ -6,17 +6,4 @@
     margin: 0px 0px 20px 0px;
     position: relative;
 }
-.editRight{
-    position: absolute;
-    right: -15px;
-    top: -15px;
-    cursor: pointer;
-    padding: 5px;
-    transition: all 0.2s;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    color: #444444;
-}
-.editRight:hover{
-    background: rgba(255, 255, 255, 1);
-}
+

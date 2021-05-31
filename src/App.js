@@ -33,6 +33,9 @@ function App() {
                         }
                         dispatch(setAuthUserData(payload))
                     }
+                    if (response.data.resultCode === 1 && window.M) {
+                            window.M.toast({html: response.data.messages})
+                    }
                 })
         }
     }, [])

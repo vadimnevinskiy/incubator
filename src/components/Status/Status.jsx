@@ -4,17 +4,23 @@ import {Field, Form} from "react-final-form";
 import {profileAPI} from "../../redux/api";
 import {useDispatch} from "react-redux";
 import {setStatus} from "../../redux/actions/profile-action";
+import ShowHideBtn from "../common/ShowHideBtn/ShowHideBtn";
 
 
 
 
 const Status = ({status, myId, userId}) => {
     const dispatch = useDispatch();
-    const [showStatusForrm, setShowStatusForm] = useState(false)
 
-    const showStatusForm = useCallback((val) => {
-        setShowStatusForm(val)
+    // TOGGLE_FORM
+    const [showForm, setShowForm] = useState(false)
+    const toggleForm = useCallback((val) => {
+        setShowForm(val)
     }, [])
+
+
+
+
 
     const onSubmit = values => {
         if (values.status) {
@@ -22,7 +28,7 @@ const Status = ({status, myId, userId}) => {
                 .then(response => {
                     if(response.status )
                         dispatch(setStatus(values.status))
-                    showStatusForm(false)
+                    setShowForm(false)
                 })
         } else {
             window.M.toast({html: 'Empty data!'})
@@ -34,21 +40,15 @@ const Status = ({status, myId, userId}) => {
     return (
         <div className={classes.status + " z-depth-1"}>
             {
-                !showStatusForrm &&
+                !showForm &&
                 <>{status}</>
             }
             {
                 Number(myId) === Number(userId) &&
-                <>
-                    {
-                        !showStatusForrm
-                            ? <i className={classes.editRight + " material-icons"} onClick={() => showStatusForm(true)}>create</i>
-                            : <i className={classes.editRight + " material-icons"} onClick={() => showStatusForm(false)}>close</i>
-                    }
-                </>
+                <ShowHideBtn toggleForm={toggleForm} showForm={showForm} />
             }
             {
-                showStatusForrm &&
+                showForm &&
                 <Form
                     onSubmit={onSubmit}
                     initialValues={{ status: status}}

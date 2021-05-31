@@ -28,3 +28,16 @@
     display: inline-block;
     margin: 0px 10px 10px;
 }
+
+
+.ProfileHeader{
+    position: relative;
+}
+
+
+
+.contactsBlock{
+    border: 1px solid #cccccc;
+    padding: 20px;
+    background: #ffffff;
+}
