@@ -1,16 +1,26 @@
-import React, {useEffect} from "react";
+import React, {Suspense, useEffect} from "react";
 import './App.css';
 import 'materialize-css'
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import {Route, useHistory} from "react-router-dom";
-import Profile from "./Pages/Profile/Profile";
-import Dialogs from "./Pages/Dialogs/Dialogs";
-import Users from "./Pages/Users/Users";
-import Login from "./Pages/Login/Login";
+
+
 import {useDispatch, useSelector} from "react-redux";
 import {authAPI} from "./redux/api";
 import {setAuthUserData} from "./redux/redusers/auth-reducer";
+import PreloaderCircle from "./components/common/Preloaders/PreloaderCircle";
+import PreloaderHorizontal from "./components/common/Preloaders/PreloaderHorizontal";
+
+
+// import Profile from "./Pages/Profile/Profile";
+// import Dialogs from "./Pages/Dialogs/Dialogs";
+// import Users from "./Pages/Users/Users";
+// import Login from "./Pages/Login/Login";
+const Profile = React.lazy(() => import ("./Pages/Profile/Profile"));
+const Dialogs = React.lazy(() => import ("./Pages/Dialogs/Dialogs"));
+const Users = React.lazy(() => import ("./Pages/Users/Users"));
+const Login = React.lazy(() => import ("./Pages/Login/Login"));
 
 
 function App() {
@@ -48,10 +58,12 @@ function App() {
                 <div className="row">
                     <Sidebar />
                     <div className="col s12 m9 l9 xl10">
-                        <Route path={'/profile/:userId?'} render={() => <Profile />} />
-                        <Route path={'/users'} render={() => <Users />} />
-                        <Route path={'/dialogs'} render={() => <Dialogs />} />
-                        <Route path={'/login'} render={() => <Login />} />
+                        <Suspense fallback={<PreloaderHorizontal />}>
+                            <Route path={'/profile/:userId?'} render={() => <Profile />} />
+                            <Route path={'/users'} render={() => <Users />} />
+                            <Route path={'/dialogs'} render={() => <Dialogs />} />
+                            <Route path={'/login'} render={() => <Login />} />
+                        </Suspense>
                     </div>
                 </div>
             </div>
