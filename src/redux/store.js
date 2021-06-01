@@ -4,11 +4,13 @@ import sidebarReducer from "./redusers/sidebar-reducer";
 import profileReducer from "./redusers/profile-reducer";
 import generalReducer from "./redusers/general-reducer";
 import authReducer from "./redusers/auth-reducer";
+import dialogsReducer from "./redusers/dialogs-reducer";
 
 const reducers = combineReducers({
     sidebar: sidebarReducer,
     userPage: userReducer,
     profilePage : profileReducer,
+    dialogsPage: dialogsReducer,
     general: generalReducer,
     auth: authReducer
 })

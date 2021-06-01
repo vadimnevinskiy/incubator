@@ -13,3 +13,6 @@ export const SET_PROFILE = 'SET_PROFILE';
 export const SET_MY_AUTH_DATA = 'SET_MY_AUTH_DATA';
 export const SET_AUTH_ID = 'SET_AUTH_ID';
 export const SET_USER_DATA = 'SET_USER_DATA';
+
+export const SET_DIALOGS = 'SET_DIALOGS';
+export const SET_MESSAGES = 'SET_MESSAGES';
