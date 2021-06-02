@@ -1,11 +1,17 @@
 import {SET_DIALOGS, SET_MESSAGES} from "../vars";
+import {DialogActionType, DialogType, MessagesActionType, MessagesType} from "../actions/dialogs-action";
 
-const initialState = {
+
+export type InitialStateType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessagesType>
+}
+const initialState: InitialStateType = {
     dialogs: [],
     messages: []
 }
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state: InitialStateType = initialState, action: DialogActionType | MessagesActionType): InitialStateType => {
     switch (action.type) {
         case SET_DIALOGS:
             return {
