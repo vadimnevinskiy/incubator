@@ -3,9 +3,9 @@ import classes from './LoginForm.module.css';
 import {Field, Form} from "react-final-form";
 import {useDispatch} from "react-redux";
 import {setToggleFetching} from "../../redux/actions/general-actions";
-import {setAuthUserData} from "../../redux/redusers/auth-reducer";
 import {authAPI} from "../../redux/api";
 import {useHistory} from "react-router-dom";
+import {setAuthUserData} from "../../redux/actions/auth-action";
 
 
 const LoginForm = () => {

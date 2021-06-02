@@ -9,7 +9,7 @@ const initialState: InitialStateType = {
     fetching: false,
     authId: null
 }
-const generalReducer = (state = initialState, action: any): InitialStateType => {
+const generalReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case FETCHING_TOGGLE:
             return {

@@ -8,9 +8,9 @@ import {Route, useHistory} from "react-router-dom";
 
 import {useDispatch, useSelector} from "react-redux";
 import {authAPI} from "./redux/api";
-import {setAuthUserData} from "./redux/redusers/auth-reducer";
-import PreloaderCircle from "./components/common/Preloaders/PreloaderCircle";
+
 import PreloaderHorizontal from "./components/common/Preloaders/PreloaderHorizontal";
+import {setAuthUserData} from "./redux/actions/auth-action";
 
 
 // import Profile from "./Pages/Profile/Profile";

@@ -1,4 +1,4 @@
-import {SET_MY_AUTH_DATA, SET_USER_DATA} from "../vars";
+import {SET_USER_DATA} from "../vars";
 
 const initializeState = {
     userId: null,
@@ -18,18 +18,6 @@ const authReducer = (state = initializeState, action) => {
             }
         default:
             return state;
-    }
-}
-
-export const setAuthUserData = ({userId, email, login, isAuth}) => {
-    return {
-        type: SET_USER_DATA,
-        payload: {
-            userId,
-            email,
-            login,
-            isAuth
-        }
     }
 }
 

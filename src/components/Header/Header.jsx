@@ -2,8 +2,8 @@ import React, {useCallback, useEffect} from "react";
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {authAPI} from "../../redux/api";
-import {setAuthUserData} from "../../redux/redusers/auth-reducer";
 import {setProfile} from "../../redux/actions/profile-action";
+import {setAuthUserData} from "../../redux/actions/auth-action";
 
 const Header = () => {
     const history = useHistory();
