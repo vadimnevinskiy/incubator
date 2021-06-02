@@ -1,11 +1,11 @@
 import {FETCHING_TOGGLE, SET_AUTH_ID} from "../vars";
 
-type ToggleFetchingActionType = {
+export type ToggleFetchingActionType = {
     type: typeof FETCHING_TOGGLE
     fetching: boolean
 }
 
-type AuthIdActionType = {
+export type AuthIdActionType = {
     type: typeof SET_AUTH_ID
     authId: number
 }
