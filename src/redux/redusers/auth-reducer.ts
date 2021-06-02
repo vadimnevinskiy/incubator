@@ -1,6 +1,16 @@
 import {SET_USER_DATA} from "../vars";
 
-const initializeState = {
+export type InitializeStateType = {
+    userId: number | null
+    email: string | null
+    login: string | null
+    isAuth: boolean
+    isFetching: boolean
+    captcha?: string | null
+}
+
+
+const initializeState: InitializeStateType = {
     userId: null,
     email: null,
     login: null,
@@ -9,7 +19,7 @@ const initializeState = {
     captcha: null
 }
 
-const authReducer = (state = initializeState, action) => {
+const authReducer = (state: InitializeStateType = initializeState, action: any): InitializeStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
