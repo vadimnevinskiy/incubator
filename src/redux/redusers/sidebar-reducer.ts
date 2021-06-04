@@ -1,15 +1,13 @@
 import {SET_MENU} from "../vars";
-import {MenuActionType, MenuType} from "../actions/sidebar-action";
+import {MenuActionType, SidebarStateType} from "../../types/types";
 
 
-type InitialStateType = {
-    menu: Array<MenuType>
-}
-const initialState = {
+
+const initialState: SidebarStateType = {
     menu: []
 }
 
-const sidebarReducer = (state: InitialStateType = initialState, action: MenuActionType): InitialStateType => {
+const sidebarReducer = (state: SidebarStateType = initialState, action: MenuActionType): SidebarStateType => {
     switch (action.type) {
         case SET_MENU:
             return {

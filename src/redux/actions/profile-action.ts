@@ -1,17 +1,8 @@
-import {SET_AUTH_ID, SET_PROFILE, SET_STATUS} from "../vars";
-import {ProfileType} from "../redusers/profile-reducer";
-import exp from "constants";
+import {SET_PROFILE, SET_STATUS} from "../vars";
+import {ProfileActionType, StatusActionType} from "../../types/types";
 
 
-export type ProfileActionType = {
-    type: typeof SET_PROFILE,
-    profile: ProfileType
-}
 
-export type StatusActionType = {
-    type: typeof SET_STATUS,
-    status: string
-}
 
 export const setProfile = (profile: any): ProfileActionType => {
     return {

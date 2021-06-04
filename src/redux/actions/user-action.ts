@@ -1,38 +1,21 @@
 import {
-    FETCHING_TOGGLE,
     SET_CURRENT_PAGE,
     SET_FOLLOWING_USER,
     SET_TOTAL_USERS_COUNT,
     SET_UNFOLLOWING_USER,
     SET_USERS
 } from "../vars";
-import {UserType} from "../redusers/user-reducer";
+import {
+    CurrentPageType,
+    FollowingUserType,
+    TotalUsersCountType,
+    UnfollowingUserType,
+    UsersActionsType,
+    UserType
+} from "../../types/types";
 
 
-export type UsersActionsType = {
-    type: typeof SET_USERS
-    users: Array<UserType>
-}
 
-export type TotalUsersCountType = {
-    type: typeof SET_TOTAL_USERS_COUNT
-    totalCount: number
-}
-
-export type CurrentPageType = {
-    type: typeof SET_CURRENT_PAGE
-    currentPage: number
-}
-
-export type FollowingUserType = {
-    type: typeof SET_FOLLOWING_USER
-    userId: number
-}
-
-export type UnfollowingUserType = {
-    type: typeof SET_UNFOLLOWING_USER
-    userId: number
-}
 
 
 export const setUsers = (users: Array<UserType>): UsersActionsType => {

@@ -1,16 +1,8 @@
 import {SET_USER_DATA} from "../vars";
-
-export type InitializeStateType = {
-    userId: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-    isFetching: boolean
-    captcha?: string | null
-}
+import {AuthStateType} from "../../types/types";
 
 
-const initializeState: InitializeStateType = {
+const initializeState: AuthStateType = {
     userId: null,
     email: null,
     login: null,
@@ -19,7 +11,7 @@ const initializeState: InitializeStateType = {
     captcha: null
 }
 
-const authReducer = (state: InitializeStateType = initializeState, action: any): InitializeStateType => {
+const authReducer = (state: AuthStateType = initializeState, action: any): AuthStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {

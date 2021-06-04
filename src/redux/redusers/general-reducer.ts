@@ -1,16 +1,13 @@
 import {FETCHING_TOGGLE, SET_AUTH_ID} from "../vars";
-import {AuthIdActionType, ToggleFetchingActionType} from "../actions/general-actions";
+import {AuthIdActionType, GeneralStateType, ToggleFetchingActionType} from "../../types/types";
 
-export type InitialStateType ={
-    fetching: boolean,
-    authId: number | null
-}
 
-const initialState: InitialStateType = {
+
+const initialState: GeneralStateType = {
     fetching: false,
     authId: null
 }
-const generalReducer = (state: InitialStateType = initialState, action: ToggleFetchingActionType | AuthIdActionType): InitialStateType => {
+const generalReducer = (state: GeneralStateType = initialState, action: ToggleFetchingActionType | AuthIdActionType): GeneralStateType => {
     switch (action.type) {
         case FETCHING_TOGGLE:
             return {

@@ -1,14 +1,7 @@
 import {FETCHING_TOGGLE, SET_AUTH_ID} from "../vars";
+import {AuthIdActionType, ToggleFetchingActionType} from "../../types/types";
 
-export type ToggleFetchingActionType = {
-    type: typeof FETCHING_TOGGLE
-    fetching: boolean
-}
 
-export type AuthIdActionType = {
-    type: typeof SET_AUTH_ID
-    authId: number
-}
 
 export const setToggleFetching = (fetching: boolean): ToggleFetchingActionType => {
     return {

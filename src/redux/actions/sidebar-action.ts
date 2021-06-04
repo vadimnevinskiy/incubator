@@ -1,16 +1,7 @@
 import {SET_MENU} from "../vars";
-import exp from "constants";
+import {MenuActionType, MenuType} from "../../types/types";
 
-export type MenuType = {
-    id: number
-    name: string
-    link: string
-}
 
-export type MenuActionType = {
-    type: typeof SET_MENU,
-    menu: Array<MenuType>
-}
 
 export const setMenu = (menu: Array<MenuType>): MenuActionType => {
     return {
