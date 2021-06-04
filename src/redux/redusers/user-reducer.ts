@@ -1,4 +1,31 @@
 import {FETCHING_TOGGLE, SET_CURRENT_PAGE, SET_FOLLOWING_USER, SET_TOTAL_USERS_COUNT, SET_USERS} from "../vars";
+import {
+    CurrentPageType,
+    FollowingUserType,
+    TotalUsersCountType,
+    UnfollowingUserType,
+    UsersActionsType
+} from "../actions/user-action";
+
+type PhotoType = {
+    small: string | null
+    large: string | null
+}
+export type UserType = {
+    name: string | null
+    id: number
+    uniqueUrlName: string | null
+    photos: PhotoType
+    status: string | null
+    followed: boolean
+}
+
+type InitialStateType = {
+    users: Array<UserType>
+    totalCount: number
+    pageSize: number
+    currentPage: number
+}
 
 const initialState = {
     users: [],
@@ -7,7 +34,7 @@ const initialState = {
     currentPage: 1
 }
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state: InitialStateType = initialState, action: UsersActionsType | TotalUsersCountType | CurrentPageType | FollowingUserType | UnfollowingUserType): InitialStateType => {
     switch (action.type) {
         case SET_USERS:
             return {
