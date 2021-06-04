@@ -2,14 +2,22 @@ import React, {useEffect, useState} from "react";
 import classes from './Paginator.module.css';
 
 
-const Paginator = ({changeCurrentPage, totalCount, pageSize, currentPage, items, portionSize = 10}) => {
-    const [pagesNumbersForDisplayLayout, setPages] = useState([]);
+type PropsType = {
+    changeCurrentPage: (pageItem: number) => void
+    totalCount: number
+    pageSize: number
+    currentPage: number
+    portionSize: number
+}
+
+const Paginator: React.FC<PropsType> = ({changeCurrentPage, totalCount, pageSize, currentPage, portionSize = 10}) => {
+    const [pagesNumbersForDisplayLayout, setPages] = useState<number[]>([]);
     const pagesLength = Math.ceil(totalCount / pageSize);
 
 
     useEffect(() => {
         const setPageNumbersToArray = () => {
-            const temporaryStorageOfPages = [];
+            const temporaryStorageOfPages: Array<number> = [];
             for (let i = 1; i <= pagesLength; i++) {
                 temporaryStorageOfPages.push(i)
             }

@@ -73,7 +73,7 @@ const Users = () => {
                     <PreloaderCircle/>
                 }
                 <Paginator changeCurrentPage={changeCurrentPage} totalCount={totalCount} pageSize={pageSize}
-                           currentPage={currentPage} items={users}/>
+                           currentPage={currentPage}/>
                 {
                     users.map((user, index) => {
                         return (
